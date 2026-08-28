@@ -15,7 +15,14 @@ import (
 )
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("I am here")
+		// 2. Set the response header to JSON
+	w.Header().Set("Content-Type", "application/json")
+	
+	// 3. Set the HTTP status to 200 OK
+	w.WriteHeader(http.StatusOK)
+	
+	// 4. Write the healthy status message
+	w.Write([]byte(`{"status": "healthy"}`))
 }
 
 // Endpoint to generate a Zernio OAuth link based on frontend selection
@@ -233,6 +240,7 @@ func handleExchange(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func handleMain()
 func main() {
 	err := godotenv.Load("/home/krazygenus/Desktop/dust/.env")
 	if err != nil {
@@ -254,7 +262,7 @@ func main() {
 
 	mux.HandleFunc("/whatsapp/webhook", channel.WhatsAppHandler)
 	mux.HandleFunc("/mail/webhook", channel.GmailHandler)
-
+	mux.HandleFunc("/", defaultHandler)
 	// Hook up our two functional endpoint routing hooks
 	mux.HandleFunc("/api/get-connect-link", handleGetConnectLink)
 	mux.HandleFunc("/api/exchange", handleExchange)
