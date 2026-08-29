@@ -11,7 +11,7 @@ import (
 
 func UploadVoiceToSupabase(oggBytes []byte) (string, error) {
 	supabaseURL := "https://joozxtnshnyrdwreyoud.supabase.co/storage/v1"
-	serviceRoleKey := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impvb3p4dG5zaG55cmR3cmV5b3VkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDcyMTIxNywiZXhwIjoyMTAwMjk3MjE3fQ.RNwBRwl3F5BoLobmK2HBG2Klzo8_1Sq_S9zYAgYFUAc"
+	serviceRoleKey := ""
 
 	// Initialize the client
 	storageClient := storage_go.NewClient(supabaseURL, serviceRoleKey, nil)
